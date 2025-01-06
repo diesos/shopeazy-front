@@ -1,0 +1,23 @@
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    padding: 20px;
+  }
+  
+  .feature-item {
+    width: 30%;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-item h2 {
+    color: #333;
+  }
+  
+  .feature-item p {
+    color: #666;
+  }
