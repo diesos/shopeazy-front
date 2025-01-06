@@ -1,0 +1,21 @@
+.list-container {
+    text-align: center;
+  }
+  
+  .item-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .item {
+    margin: 1rem 0;
+  }
+  
+  .item-link {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .item-link:hover {
+    text-decoration: underline;
+  }

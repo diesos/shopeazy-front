@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Typography, Button, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import "../style/HomePage.css";
-
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
 
@@ -24,14 +23,16 @@ const HomePage: React.FC = () => {
                 Gérez facilement vos listes de courses, partagez-les et restez organisé.<br /> Connectez-vous pour commencer !
             </Typography>
             <Box mt={4}>
+                
                 <Button
                     variant="contained"
-                    color="primary"
+                    color='primary'
                     size="large"
                     onClick={() => navigate('/auth')}
                 >
                     Connexion / Inscription
                 </Button>
+                
             </Box>
             <div className="features">
                 <div className="feature-item">
@@ -43,7 +44,7 @@ const HomePage: React.FC = () => {
                     <p>Partagez votre liste de courses avec vos proches.</p>
                 </div>
                 <div className="feature-item">
-                    <h2>Suivre votre progrès</h2>
+                    <h2>Suivre vos achats</h2>
                     <p>Gardez une trace de vos achats et de ce qui reste à acheter.</p>
                 </div>
             </div>

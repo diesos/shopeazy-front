@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../style/Home.css"; 
 import Navbar from "../Component/Navbar.tsx"; 
-
+import "../style/Home.css";
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
   return (
     <div className="home-container">
-      {/* Navbar */}
       <Navbar />
 
       {/* Hero Section */}
