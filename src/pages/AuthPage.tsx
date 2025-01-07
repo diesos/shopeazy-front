@@ -7,14 +7,50 @@ import {
     Box,
     TextField,
     Button,
+    Alert,
 } from '@mui/material';
+import { login, register } from "../services/api.ts";
+import { useNavigate } from 'react-router-dom';
+
 
 const AuthPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState(0);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+    const navigate = useNavigate();
 
     const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
         setActiveTab(newValue);
+        setError('');
+        setSuccess('');
     };
+
+    const handleLogin = async () => {
+        try {
+            const response = await login(email, password);
+            setSuccess('Connexion réussie');
+            console.log('Utilisateur connecté :', response);
+            setTimeout(() => { navigate('/home'); });
+        } catch (err: any) {
+            setError(err.response?.data?.message || 'Erreur lors de la connexion');
+        }
+    };
+
+    const handleRegister = async () => {
+        try {
+            const response = await register(name, email, password);
+            setSuccess("Inscription réussie, vous pouvez vous connecter !");
+            console.log('Utilisateur enregistré :', response);
+        } catch (err: any) {
+            setError(err.response?.data?.message || "Erreur lors de l'inscription");
+        }
+    };
+
+
 
     return (
         <Container
@@ -38,6 +74,9 @@ const AuthPage: React.FC = () => {
                 <Tab label="Inscription" />
             </Tabs>
 
+            {error && <Alert severity="error">{error}</Alert>}
+            {success && <Alert severity="success">{success}</Alert>}
+
             <Box>
                 {activeTab === 0 ? (
                     <Box>
@@ -48,6 +87,8 @@ const AuthPage: React.FC = () => {
                             type="email"
                             margin="normal"
                             variant="outlined"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <TextField
                             fullWidth
@@ -55,12 +96,15 @@ const AuthPage: React.FC = () => {
                             type="password"
                             margin="normal"
                             variant="outlined"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <Button
                             fullWidth
                             variant="contained"
                             color="primary"
                             style={{ marginTop: '20px' }}
+                            onClick={handleLogin}
                         >
                             Connexion
                         </Button>
@@ -74,6 +118,8 @@ const AuthPage: React.FC = () => {
                             type="text"
                             margin="normal"
                             variant="outlined"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <TextField
                             fullWidth
@@ -81,6 +127,8 @@ const AuthPage: React.FC = () => {
                             type="text"
                             margin="normal"
                             variant="outlined"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
                         />
                         <TextField
                             fullWidth
@@ -88,6 +136,8 @@ const AuthPage: React.FC = () => {
                             type="email"
                             margin="normal"
                             variant="outlined"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <TextField
                             fullWidth
@@ -95,12 +145,15 @@ const AuthPage: React.FC = () => {
                             type="password"
                             margin="normal"
                             variant="outlined"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <Button
                             fullWidth
                             variant="contained"
                             color="primary"
                             style={{ marginTop: '20px' }}
+                            onClick={handleRegister}
                         >
                             S'inscrire
                         </Button>
