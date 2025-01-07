@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
                 Gérez facilement vos listes de courses, partagez-les et restez organisé.<br /> Connectez-vous pour commencer !
             </Typography>
             <Box mt={4}>
-                
+
                 <Button
                     variant="contained"
                     color='primary'
@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
                 >
                     Connexion / Inscription
                 </Button>
-                
+
             </Box>
             <div className="features">
                 <div className="feature-item">
