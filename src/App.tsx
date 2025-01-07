@@ -13,6 +13,7 @@ const App: React.FC = () => {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/home" element={<Home/>}/>
         <Route path="/list" element={<List/>}/>
+        <Route path="*" element={<h1>404 - Not Found</h1>} />
       </Routes>
     </Router>
   );

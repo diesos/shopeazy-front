@@ -34,6 +34,8 @@ const AuthPage: React.FC = () => {
             const response = await login(email, password);
             setSuccess('Connexion réussie');
             console.log('Utilisateur connecté :', response);
+
+            localStorage.setItem('token', response.accessToken);
             setTimeout(() => { navigate('/home'); });
         } catch (err: any) {
             setError(err.response?.data?.message || 'Erreur lors de la connexion');

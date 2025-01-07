@@ -7,27 +7,39 @@ const apiClient = axios.create({
     },
 });
 // get articles
-export const getItem = async () => {
-    const response = await apiClient.get("/list/item");
+export const getItem = async (token: string) => {
+    const response = await apiClient.get(
+        "/list",
+        { headers: { Authorization: `Bearer ${token}`},
+    });
     return response.data;
 }
 
 // add articles
-export const addItem = async (name: string, quantity: number) => {
-    const response = await apiClient.post("/list/item", {name, quantity});
+export const addItem = async (token: string, name: string, quantity: number) => {
+    const response = await apiClient.post(
+        "/list/item",
+        {name, quantity},
+        { headers: { Authorization: `Bearer ${token}`},
+    });
     return response.data;
 };
 
 // update articles
-export const updateItem = async(name: string, quantity: number) => {
-    const response = await apiClient.put("/list/item", {name, quantity});
+export const updateItem = async(token:string, id: number, item: object) => {
+    const response = await apiClient.put(
+        `/list/item/${id}`,
+        item,
+        { headers: { Authorization: `Bearer ${token}`},
+    });
     return response.data;
 };
 
 // delete articles
-export const deleteItem = async (name: string, quantity: number) => {
-    const response = await apiClient.delete(`/list/item`, {
-      params: { name, quantity }, // Les paramètres sont passés ici
+export const deleteItem = async (token: string, id: number) => {
+    const response = await apiClient.delete(
+        `/list/item/${id}`,
+        { headers: { Authorization: `Bearer ${token}`},
     });
     return response.data;
   };
