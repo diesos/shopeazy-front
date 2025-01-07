@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "../style/Navbar.css";
 const Navbar: React.FC = () => {
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   window.location.href = "/";
+  // }
+
   return (
     <div className="home-container">
       {/* Navbar */}
