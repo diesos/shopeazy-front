@@ -36,7 +36,7 @@ export default function ItemCard({ item, onDelete, onUpdateBought, onUpdate }: I
           alignItems: 'start',
         }}
       >
-        <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 22 }}>
+        <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 26, fontWeight: 'bold' }}>
           {item.name}
         </Typography>
         <Typography variant="body2">
