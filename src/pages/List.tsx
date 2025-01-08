@@ -63,6 +63,11 @@ const List: React.FC = () => {
             console.error("Erreur lors de la suppression de l'article :", err);
         }
     }
+
+    const handleUpdateItem = (updatedItem) => {
+        console.log("Item updated:", updatedItem);
+        // Met à jour l'élément dans la liste ou envoie une requête PUT/PATCH au backend
+      };
     
     return (
         <div className="list-container">
@@ -75,6 +80,7 @@ const List: React.FC = () => {
                             item={item}
                             onDelete={() => handleDeleteItem(item._id)}
                             onUpdateBought={() => handleUpdateBought(item)}
+                            onUpdate={handleUpdateItem}
                             />
                     </li>
                 ))}
