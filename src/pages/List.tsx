@@ -64,9 +64,15 @@ const List: React.FC = () => {
         }
     }
 
-    const handleUpdateItem = (updatedItem) => {
-        console.log("Item updated:", updatedItem);
-        // Met à jour l'élément dans la liste ou envoie une requête PUT/PATCH au backend
+    const handleUpdateItem = (itemID, updatedItem) => {
+        console.log("Item updated:", updatedItem + " with id: " + itemID);
+        try {
+            if (!token) throw new Error("Token manquant");
+            updateItem(token, itemID, updatedItem);
+            fetchItems();
+        } catch (err) {
+            console.error("Erreur lors de la mise à jour de l'article :", err);
+        }
       };
     
     return (
@@ -80,7 +86,7 @@ const List: React.FC = () => {
                             item={item}
                             onDelete={() => handleDeleteItem(item._id)}
                             onUpdateBought={() => handleUpdateBought(item)}
-                            onUpdate={handleUpdateItem}
+                            onUpdate={(updatedItem) => handleUpdateItem(item._id, updatedItem)}
                             />
                     </li>
                 ))}
