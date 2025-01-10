@@ -42,7 +42,8 @@ export default function ItemCard({ item, onDelete, onUpdateBought, onUpdate }: I
   return (
     <Card
       sx={{
-        width: 600,
+        width: "90%",
+        maxWidth: 500,
         margin: "auto",
         boxShadow: 3,
         display: "flex",
