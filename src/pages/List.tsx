@@ -31,7 +31,7 @@ const List: React.FC = () => {
 
     useEffect(() => {
         fetchItems();
-    }, []);
+    }, [items]);
 
 
     const handleAddItem = async (name: string, quantity: number) => {
